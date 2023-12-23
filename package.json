@@ -1,0 +1,14 @@
+{
+  "name": "electron-blog",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "SquidSpirit",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.1.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
