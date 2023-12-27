@@ -1,14 +1,24 @@
 {
   "name": "electron-blog",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "./dist/main.js",
   "author": "SquidSpirit",
   "license": "MIT",
-  "devDependencies": {
-    "electron": "^28.1.0"
-  },
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "build": "tsc && copyfiles -u 1 src/**/*.html src/**/*.css dist/",
+    "build-react": "cd app && yarn run build && cd ..",
+    "start": "yarn run clean && yarn run build-react && yarn run build && electron ."
+  },
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "bootstrap": "5.3.2",
+    "copyfiles": "^2.4.1",
+    "dotenv": "^16.3.1",
+    "unirest": "^0.6.0"
   }
 }

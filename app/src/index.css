@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC|Quicksand|Noto+Serif+TC&display=swap');
+
+* {
+    font-family: "Noto Sans TC" !important;
+}
+
+h1 {
+    font-weight: 800 !important;
+}
+
+h2 {
+    font-weight: 700 !important;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+.navbar {
+    font-weight: 600;
+}

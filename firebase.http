@@ -1,0 +1,89 @@
+@API_KEY = AIzaSyA785cGchBMjkiiQ2wfoVo0J7XA_3Ms-NQ
+@PROJECT_ID = electron-blog
+@TOKEN = {{login.response.body.idToken}}
+
+
+### Get id token with email and password
+# @name login
+
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{API_KEY}}
+Content-Type: application/json
+
+{
+    "email": "an920107@gmail.com",
+    "password": "5120989An",
+    "returnSecureToken": true,
+}
+
+
+### Sign up with email and password
+POST https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={{API_KEY}}
+Content-Type: application/json
+
+{
+    "email": "an920107@gmail.com",
+    "password": "1",
+    "returnSecureToken": true,
+}
+
+### Get id token with refresh token
+POST https://securetoken.googleapis.com/v1/token?key={{API_KEY}}
+Content-Type: application/json
+
+{
+    "grant_type": "refresh_token",
+    "refresh_token": "AMf-vBxE6D1EphVeQ9y2Z--ShpJbGqR8XOZYiD55Na0KLZ9XYAKXybp1N-xx09ip2AeypEE6iENaWAqHyjZZgWglRDUCTF27NcwFfXncJDjosDE-HDqBf3LOE1A3eiZBvsKNbMsHf-KhVXDcrG0CZd1nWjbcqAQfQdYIyhSQYsf_asrD4DynupS39-O5tae80uXz9npYjW-TMONDIg_GX8hdmmnDZ5dBmw"
+}
+
+
+### Get user data
+POST https://identitytoolkit.googleapis.com/v1/accounts:lookup?key={{API_KEY}}
+Content-Type: application/json
+
+{
+    "idToken": "{{TOKEN}}",
+}
+
+
+### Update user profile
+POST https://identitytoolkit.googleapis.com/v1/accounts:update?key={{API_KEY}}
+Content-Type: application/json
+
+{
+    "idToken": "{{TOKEN}}",
+    "displayName": "Squid",
+    "returnSecureToken": false
+}
+
+
+### List or get firestore document
+GET https://firestore.googleapis.com/v1/projects/{{PROJECT_ID}}/databases/(default)/documents/user/CiUdiyUD6QZ6FQnqCg3861sLc1y1
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+
+### Create a new document on firestore
+POST https://firestore.googleapis.com/v1/projects/{{PROJECT_ID}}/databases/(default)/documents/article
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+
+### Commit document to firestore
+POST https://firestore.googleapis.com/v1/projects/{{PROJECT_ID}}/databases/(default)/documents:commit
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+    "writes": [
+        {
+            "update": {
+                "name": "projects/electron-blog/databases/(default)/documents/article/test",
+                "fields": {
+                    "title": { "stringValue": "HaHa!!!" },
+                    "content": { "stringValue": "It just a boring article..." },
+                    "author": { "stringValue": "CiUdiyUD6QZ6FQnqCg3861sLc1y1" }
+                }
+            }
+        }
+    ]
+}
