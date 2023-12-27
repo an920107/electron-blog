@@ -1,5 +1,5 @@
-const { app, BrowserWindow } = require('electron/main')
-const path = require('path')
+import { app, BrowserWindow } from 'electron/main'
+import path from 'path'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -7,12 +7,17 @@ const createMainWindow = () => {
     const mainWindow = new BrowserWindow({
         title: 'Electron Blog',
         width: 1280,
-        height: 720
+        height: 720,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: true,
+            preload: path.join(__dirname, './preload.js'),
+        }
     })
 
     if (isDev) mainWindow.webContents.openDevTools();
         
-    mainWindow.loadFile(path.join(__dirname, './renderer/index.html'))
+    mainWindow.loadFile(path.join(__dirname, '../app/build/index.html'))
 }
 
 // 等價於 app.on('ready', () => {})
