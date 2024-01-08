@@ -12,6 +12,10 @@ h2 {
     font-weight: 700 !important;
 }
 
+p {
+    white-space: pre-line;
+}
+
 .app {
     display: flex;
     flex-direction: column;

@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext } from "react";
+import { FormEvent, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import User from "../model/user";
 import { UserContext } from "../App";

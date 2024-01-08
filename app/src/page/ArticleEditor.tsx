@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useEffect, useRef, useState } from "react";
+import { FormEvent, useContext, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { UserContext } from "../App";
 import { UserContextType } from "../context/Types";
